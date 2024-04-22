@@ -1,0 +1,40 @@
+#panel {
+  height: 100%;
+  display: grid;
+  grid-template-rows: min-content auto min-content;
+  background-color: black;
+  color: white;
+}
+
+#panel>h1 {
+  width: 180px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+#panel-button {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.active {
+  padding: 5px;
+
+  display: flex;
+  flex-direction: row;
+
+  border-radius: 10px;
+  background-color: var(--gray_1);
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+}
+
+#logout_button {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}

@@ -1,0 +1,11 @@
+#new_note_form {
+  height: fit-content;
+  max-width: 400px;
+  min-width: 200px;
+
+  margin: 10px auto;
+  padding: 20px;
+  border-radius: 5px;
+
+  background-color: var(--gray_1);
+}

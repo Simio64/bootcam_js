@@ -1,0 +1,16 @@
+#principal_grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+#Bienvenida {
+  margin: 5px;
+  padding: 10px;
+
+  background-color: var(--white_2);
+  border-radius: 5px;
+}
+
+#form_new_note_principal {
+  padding: 0 5px;
+}

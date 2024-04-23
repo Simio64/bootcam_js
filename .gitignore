@@ -6,3 +6,4 @@ package-lock.json
 *.jpg
 *.gif
 *.ico
+*.sqlite

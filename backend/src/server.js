@@ -4,7 +4,6 @@ const morgan = require('morgan')
 const cors = require('cors')
 const sync_db = require('../config/sync')
 const path = require('path')
-require('colors')
 
 const directorio = require('../../dirname')
 
@@ -18,18 +17,18 @@ app.use(express.static('static'))
 
 sync_db()
 
-app.use(express.static(path.join(directorio,'/frontend/build')))
+app.use(express.static(path.join(directorio, '/frontend/dist')))
 app.get('/', (req, res) => {
-    res.sendFile(path.join(directorio,'/frontend/build/index.html'))
+    res.sendFile(path.join(directorio, '/frontend/dist/index.html'))
 })
 app.use('/api', require('../router/api'))
 app.use((req, res) => res.redirect('/'))
 
 if (process.env.SOCKET == 'false') {
     server = app.listen(process.env.PORT, () => {
-        console.log(`Listen on port: ` + `${process.env.PORT}`.brightMagenta)
-        console.log(`Enviroment: ` + `${process.env.NODE_ENV}`.yellow)
-        console.log(`Socket status: ` + `${process.env.SOCKET}`.cyan)
+        console.log(`Listen on port: ${process.env.PORT}`)
+        console.log(`Enviroment: ${process.env.NODE_ENV}`)
+        console.log(`Socket status: ${process.env.SOCKET}`)
     })
 }
 

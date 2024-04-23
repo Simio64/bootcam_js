@@ -1,4 +1,3 @@
-require('colors')
 require('dotenv').config()
 
 const http = require('http')
@@ -10,7 +9,7 @@ const url_dir = 'https://sleepy-caverns-95273.herokuapp.com'
 const server = http.createServer(app)
 const io = new Server(server, {
     cors: {
-        origin: ["http://127.0.0.1",url_dir]
+        origin: ["http://127.0.0.1", url_dir]
     }
 });
 
@@ -38,7 +37,7 @@ io.on('connection', socket => {
 })
 
 server.listen(process.env.PORT, () => {
-    console.log(`Listen on port: ` + `${process.env.PORT}`.brightMagenta)
-    console.log(`Enviroment: ` + `${process.env.NODE_ENV}`.yellow)
-    console.log(`Socket status: ` + `${process.env.SOCKET}`.cyan)
+    console.log(`Listen on port: ${process.env.PORT}`)
+    console.log(`Enviroment: ${process.env.NODE_ENV}`)
+    console.log(`Socket status: ${process.env.SOCKET}`)
 })

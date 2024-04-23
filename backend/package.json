@@ -6,8 +6,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production npx src/server.js",
     "dev": "cross-env NODE_ENV=development PORT=3002 npx nodemon src/server.js",
-    "socket": "cross-env NODE_ENV=development SOCKET=true npx nodemon socket/server_socket.js",
-    "socket:local": "cross-env NODE_ENV=development PORT=3002 SOCKET=true npx nodemon socket/server_socket.js",
+    "socket": "cross-env NODE_ENV=pro SOCKET=true npx nodemon src/server_socket.js",
+    "socket:local": "cross-env NODE_ENV=development PORT=3002 SOCKET=true npx nodemon src/server_socket.js",
     "test": "cross-env NODE_ENV=test PORT=3003 mocha || exit 0",
     "test-j": "cross-env NODE_ENV=test jest --verbose --silent",
     "test:watch": "npm run test -- --watch"

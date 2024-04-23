@@ -5,7 +5,7 @@ const cors = require('cors')
 const sync_db = require('../config/sync')
 const path = require('path')
 
-const directorio = require('../../dirname')
+const baseDir = require('../../dirname')
 
 const app = express()
 let server = null
@@ -17,12 +17,9 @@ app.use(express.static('static'))
 
 sync_db()
 
-app.use(express.static(path.join(directorio, '/frontend/dist')))
-app.get('/', (req, res) => {
-    res.sendFile(path.join(directorio, '/frontend/dist/index.html'))
-})
+app.use(express.static(path.join(baseDir, '/frontend/dist')))
 app.use('/api', require('../router/api'))
-app.use((req, res) => res.redirect('/'))
+app.get('**', (_req, res) => res.sendFile(path.join(baseDir, '/frontend/dist/index.html')))
 
 if (process.env.SOCKET == 'false') {
     server = app.listen(process.env.PORT, () => {

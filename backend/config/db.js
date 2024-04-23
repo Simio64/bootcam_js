@@ -1,5 +1,4 @@
-const { Sequelize } = require('sequelize')
-require('dotenv').config()
+import { Sequelize } from 'sequelize'
 
 /* const { MYSQL_USER, MYSQL_PASSWORD, MYSQL_HOST, MYSQL_PORT, MYSQL_DATABASE, MYSQL_DATABASE_TEST, NODE_ENV } = process.env
 let Database
@@ -17,14 +16,14 @@ else Database = MYSQL_DATABASE
     database: Database
 }) */
 
-const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: './database.sqlite',
-    logging: false
-});
-
 /* if (NODE_ENV === 'test') {
     sequelize.dropAllSchemas()
 } */
 
-module.exports = sequelize
+const sequelize = new Sequelize({
+  dialect: 'sqlite',
+  storage: './dataBase.sqlite',
+  logging: false
+});
+
+export { sequelize }

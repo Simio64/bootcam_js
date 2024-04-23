@@ -1,30 +1,30 @@
-const Sequelize = require("sequelize");
-const sequelize = require("../config/db");
-const User = require('./users')
+import { Sequelize } from 'sequelize'
+import { sequelize } from '../config/db.js'
+import { userModel } from './users.js'
 
-const Comment = sequelize.define('Comments',{
-    id_comment : {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV1,
-        unique : true,
-        primaryKey: true,
-        allowNull: false,
-    },
-    title : {
-        type: Sequelize.STRING,
-        allowNull : false
-    },
-    note : {
-        type : Sequelize.TEXT,
-        allowNull : false
-    }
+const commentModel = sequelize.define('Comments', {
+  id_comment: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV1,
+    unique: true,
+    primaryKey: true,
+    allowNull: false,
+  },
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  note: {
+    type: Sequelize.TEXT,
+    allowNull: false
+  }
 })
 
-User.hasOne(Comment,{
-    onDelete: "cascade",
-    foreignKey: {
-        allowNull: false
-    }
+userModel.hasOne(commentModel, {
+  onDelete: "cascade",
+  foreignKey: {
+    allowNull: false
+  }
 })
 
-module.exports = Comment
+export { commentModel }

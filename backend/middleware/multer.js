@@ -1,17 +1,17 @@
-const multer = require('multer')
+import multer from 'multer'
 
 const storage = multer.diskStorage({
-    destination: 'static/tiny/',
-    filename: function (req,file,cb) {
-        cb(null,`${Date.now()}-${file.originalname}`)
-    },
-    fileFilter:'',
-    limits:''
+  destination: 'static/tiny/',
+  filename: function (req, file, cb) {
+    cb(null, `${Date.now()}-${file.originalname}`)
+  },
+  fileFilter: '',
+  limits: ''
 })
-const upload = multer({storage})
+const upload = multer({ storage })
 
-exports.guardar_archivo = upload.single('myfile')
+export const savedFile = upload.single('myfile')
 
-exports.validar_archivo = (req,res) =>{
-    res.send('va todo bien')
+export const validateFile = (_req, res) => {
+  res.send('OK')
 }

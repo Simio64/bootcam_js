@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production npx src/server.js",
-    "dev": "cross-env NODE_ENV=development PORT=3002 npx nodemon src/server.js",
-    "socket": "cross-env NODE_ENV=pro SOCKET=true npx nodemon src/serverSocket.js",
-    "socket:local": "cross-env NODE_ENV=development PORT=3002 SOCKET=true npx nodemon src/serverSocket.js",
-    "test": "cross-env NODE_ENV=test PORT=3003 mocha || exit 0",
-    "test-j": "cross-env NODE_ENV=test jest --verbose --silent",
+    "start": "NODE_ENV=production npx src/server.js",
+    "dev": "NODE_ENV=development PORT=3002 npx nodemon src/server.js",
+    "socket": "NODE_ENV=pro SOCKET=true npx nodemon src/serverSocket.js",
+    "socket:local": "NODE_ENV=development PORT=3002 SOCKET=true npx nodemon src/serverSocket.js",
+    "test": "NODE_ENV=test PORT=3003 mocha || exit 0",
+    "test-j": "NODE_ENV=test jest --verbose --silent",
     "test:watch": "npm run test -- --watch"
   },
   "keywords": [],
@@ -19,7 +19,6 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
-    "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-validator": "^7.0.1",

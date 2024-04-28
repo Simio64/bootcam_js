@@ -10,7 +10,7 @@ const urlCors = '*'
 const server = http.createServer(app)
 const io = new Server(server, {
   cors: {
-    origin: ['http://127.0.0.1', 'localhost', urlCors]
+    origin: ['http://127.0.0.1', 'http://localhost:5173', urlCors]
   }
 });
 

@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
-import { userModel } from '../model/users.js'
+import dot from 'dotenv'
+dot.config()
 
 function createToken(data) {
   const token = jwt.sign(data, process.env.PROJECT_PASSWORD)

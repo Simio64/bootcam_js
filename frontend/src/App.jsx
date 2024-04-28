@@ -21,18 +21,20 @@ function App() {
 
   return (
     <main>
-      <img src={`${urlBase}/tiny/backstage.png`} alt="background" />
-      <Routes>
-        <Route path='/login' element={<Login />} />
-        {state.user.code === 'LOGGED' ?
-          <>
-            <Route path='/' element={<Principal />} />
-            <Route path='/profile/:id' element={<Profile />} />
-            <Route path='*' element={<p>NOT FOUND</p>} />
-          </>
-          : null}
-        <Route path='*' element={<Navigate to='/login' />} />
-      </Routes>
+      <img src={`/images/backgrund.jpg`} alt="background" />
+      <section id='contend'>
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          {state.user.code === 'LOGGED' ?
+            <>
+              <Route path='/' element={<Principal />} />
+              <Route path='/profile/:id' element={<Profile />} />
+              <Route path='*' element={<p>NOT FOUND</p>} />
+            </>
+            : null}
+          <Route path='*' element={<Navigate to='/login' />} />
+        </Routes>
+      </section>
     </main>
   )
 }

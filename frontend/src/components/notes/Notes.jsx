@@ -37,7 +37,7 @@ function Cards(params, delete_button) {
       .then(() => socket.emit('@client/new_message'))
   }
 
-  return params.map(({ title, note, id_comment, user, imagen, updatedAt, UserId }) => {
+  return params.map(({ note, id_comment, user, imagen, updatedAt, UserId }) => {
     const date = new Date(updatedAt)
     return (
       <div className='card' key={id_comment}>
@@ -47,7 +47,6 @@ function Cards(params, delete_button) {
             <h3 className='titulo'>{user}</h3>
             <p>{format(date, 'es')}</p>
           </div>
-          <h4>{title}</h4>
           <p>{note}</p>
           {delete_button && <button className='delete_button' id={id_comment} onClick={handle_delete}> borrar</button>}
         </div>

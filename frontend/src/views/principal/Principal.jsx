@@ -48,7 +48,7 @@ function Principal() {
         <div id='form_NoteForm_principal'>
           <NoteForm />
           <div>
-            <h2>Online Users</h2>
+            <h2>Usuarios en linea</h2>
             {Users(onlineUsers)}
           </div>
         </div>

@@ -32,10 +32,10 @@ export const getUniqueComment = (req, res) => {
     .catch(error => catchError(error, res))
 }
 export const addComment = (req, res) => {
-  const { title, note, id } = req.body
-  if (title === '' || note === '') catchError({ error: 'MISSING DATA' }, res)
+  const { note, id } = req.body
+  if (note === '') catchError({ error: 'MISSING DATA' }, res)
   else {
-    commentModel.create({ title, note, UserId: id })
+    commentModel.create({ note, UserId: id })
       .then(async crud => {
         const user = await userModel.findByPk(crud.UserId)
         res.status(200).json({ ...crud.dataValues, user: user.dataValues.name, imagen: user.dataValues.imagen })
@@ -44,10 +44,10 @@ export const addComment = (req, res) => {
   }
 }
 export const updateComment = (req, res) => {
-  const { id_comment, title, note } = req.body
-  if (title === '' || note === '') catchError({ error: 'MISSING DATA' }, res)
+  const { id_comment, note } = req.body
+  if (note === '') catchError({ error: 'MISSING DATA' }, res)
   else {
-    commentModel.update({ title, note }, { where: { id_comment } })
+    commentModel.update({ note }, { where: { id_comment } })
       .then(() => {
         req.params.id = id
         getUniqueComment(req, res)

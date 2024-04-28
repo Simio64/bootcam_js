@@ -9,7 +9,7 @@
   max-width: 600px;
   min-width: 200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
 
   display: grid;
   grid-auto-rows: auto;
@@ -23,12 +23,13 @@
   height: fit-content;
   max-width: 1000px;
   min-width: 200px;
-  padding: 10px;
+  padding: 12px;
   display: grid;
   gap: 10px;
-  grid-template-columns: auto 5fr;
-  background-color: var(--magenta_2);
+  grid-template-columns: max-content auto;
+  background-color: var(--blue_2);
   border-radius: 5px;
+  color: white;
 }
 
 .user_img {
@@ -40,24 +41,10 @@
 .data_user {
   width: 100%;
   display: grid;
-
   grid-template-columns: auto max-content;
-}
-
-.data_user>p {
-  float: right;
-}
-
-.titulo {
-  color: var(--white_2);
 }
 
 .delete_button {
   background-color: red;
   float: right;
-}
-
-.delete_button:hover {
-  border: red 2px solid;
-  color: black;
 }

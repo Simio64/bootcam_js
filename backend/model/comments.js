@@ -10,10 +10,6 @@ const commentModel = sequelize.define('Comments', {
     primaryKey: true,
     allowNull: false,
   },
-  title: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
   note: {
     type: Sequelize.TEXT,
     allowNull: false

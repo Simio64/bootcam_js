@@ -1,7 +1,6 @@
-
-import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 import { login, createUser, serverStatus } from '../../store/actions/user.js'
 
@@ -13,7 +12,7 @@ function Login() {
   const [password, setPassword] = useState('')
   const [passwordConfirm, setPasswordConfirm] = useState('')
   const [newUser, setNewUser] = useState(false)
-  const [error, setError] = useState('')
+  const [messageError, setError] = useState('')
   const [server, setServer] = useState(false)
 
   const dispatch = useDispatch()
@@ -22,58 +21,74 @@ function Login() {
 
   const handleSubmit = event => {
     event.preventDefault()
-    if (mail === '' || password === '') {
-      setError('*Datos Faltantes')
-      return
-    }
-    if (newUser === true && (mail === '' || password === '' || name === '' || passwordConfirm === '')) {
-      setError('*Datos Faltantes')
-      return
-    }
-    if (newUser === true && password !== passwordConfirm) {
-      setError('*Contraseña no coincide')
-      return
-    }
     setError('')
+    if (mail === '' || password === '') setError('*Datos Faltantes')
+    if (newUser && (mail === '' || password === '' || name === '' || passwordConfirm === '')) setError('*Datos Faltantes')
+    if (newUser && password !== passwordConfirm) setError('*Contraseña no coincide')
     if (newUser) dispatch(createUser(name, mail, password))
     else dispatch(login(mail, password))
   }
 
-  useEffect(() => {
-    if (state.code === 'LOGGED') navigate('/')
-  }, [dispatch, state, handleSubmit]);
+  const handleChangeState = () => {
+    setNewUser(!newUser)
+    setError('')
+    setMail('')
+    setName('')
+    setPassword('')
+    setPasswordConfirm('')
+  }
 
   useEffect(() => {
     serverStatus()
       .then(() => setServer(true))
       .catch(() => setServer(false))
-  }, [handleSubmit])
+  }, [])
+
+  useEffect(() => {
+    if (state.code === 'LOGGED') navigate('/')
+  }, [state])
 
   return (
     <section id='login'>
       <div id='login_div'>
-        <p id='advertencia'>** LA APP SE ENCUENTRA EN DESARROLLO XFAVOR UTILIZAR CREDENCIALES FALSAS **</p>
-        <h2>App de notas</h2>
+        <h2>Chat APP!</h2>
+        <h3>Ingresa tus datos</h3>
+        <br /><br />
         <form onSubmit={handleSubmit}>
-          <input type="text" name='mail' autoFocus value={mail} onChange={({ target }) => setMail(target.value)} placeholder='notas@mail.com' />
-          {newUser ? <input type="text" name='name' value={name} onChange={({ target }) => setName(target.value)} placeholder='Nick name' /> : null}
-          <input type="password" name='password' onChange={({ target }) => setPassword(target.value)} value={password} placeholder='Password' />
-          {newUser ?
-            <>
-              <input type="password" name='passwordConfirm' onChange={({ target }) => setPasswordConfirm(target.value)} value={passwordConfirm} placeholder='Confirm Password' />
-              <button>Crear usuario</button>
-            </>
-            : <button>Validar</button>
+          <label className='input-form'>
+            <i className="fa-solid fa-envelope"></i>
+            <input type="text" name='mail' autoFocus value={mail} onChange={({ target }) => setMail(target.value)} placeholder='notas@mail.com' />
+          </label>
+          {newUser &&
+            <label className='input-form'>
+              <i className="fa-solid fa-user"></i>
+              <input type="text" name='name' value={name} onChange={({ target }) => setName(target.value)} placeholder='Nick name' />
+            </label>
           }
-
+          <label className='input-form'>
+            <i className="fa-solid fa-lock"></i>
+            <input type="password" name='password' onChange={({ target }) => setPassword(target.value)} value={password} placeholder='Password' />
+          </label>
+          {newUser &&
+            <label className='input-form'>
+              <i className="fa-solid fa-lock"></i>
+              <input type="password" name='passwordConfirm' onChange={({ target }) => setPasswordConfirm(target.value)} value={passwordConfirm} placeholder='Confirm Password' />
+            </label>
+          }
+          <p className='newUser' onClick={handleChangeState}>{!newUser ? 'Nuevo por aquí?' : 'Ya tengo cuenta!'}</p>
+          <br />
+          <button>
+            <p>{newUser ? "Registrarme" : "Entrar"}</p>
+            <i className="fa-solid fa-arrow-right"></i>
+          </button>
         </form>
-        {!newUser ? <p className='newUser' onClick={() => setNewUser(!newUser)}>Nuevo por aqui?</p> : <p className='newUser' onClick={() => setNewUser(!newUser)}>Ya tengo cuenta</p>}
         {state.code === 'USER OR PASSWORD NO MATCH' ? <p className='highlight'>*usuaro o contraseña no coinciden</p> : null}
         {state.code === 'mail must be unique' ? <p className='highlight'>*El correo ya se encuentra registrado</p> : null}
         {state.code === 'name must be unique' ? <p className='highlight'>*El Nick ya esta en uso</p> : null}
-        {error !== '' ? <p className='highlight'>{error}</p> : null}
+        {messageError !== '' ? <p className='highlight'>{messageError}</p> : null}
+        <p id='advertencia'>** LA APP SE ENCUENTRA EN DESARROLLO SE RECOMIENDA UTILIZAR CREDENCIALES FALSAS **</p>
         <div id='server_status'>
-          {server ? <><p>Server Status -- </p><div id='green'></div></> : <><p>Server Status -- </p><div id='red'></div></>}
+          {server ? <><p>Estado del servidor -- </p><div id='green'></div></> : <><p>Server Status -- </p><div id='red'></div></>}
         </div>
       </div>
     </section>

@@ -3,7 +3,7 @@ import { userModel } from '../model/users.js'
 import bcrypt from 'bcrypt'
 
 function catchError(error, res) {
-  res.status(400).json({ code: 'FAIL', ...error }
+  res.status(400).json({ code: 'FAIL', error }
   )
 }
 

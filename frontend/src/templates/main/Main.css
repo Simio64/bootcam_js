@@ -4,6 +4,7 @@
 
   display: grid;
   grid-template-columns: min-content auto;
+  background-color: transparent;
 }
 
 #no_logged,

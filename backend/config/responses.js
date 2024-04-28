@@ -1,4 +1,4 @@
-export default Responses = {
+const Responses = {
     fail: 'FAIL',
     noContend: 'NO CONTEND',
     missData: 'MISSING DATA',
@@ -6,3 +6,5 @@ export default Responses = {
     noMach: 'NO MATCH',
     logged: 'LOGGED'
 }
+
+export default Responses

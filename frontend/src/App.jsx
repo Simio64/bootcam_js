@@ -21,8 +21,8 @@ function App() {
 
   return (
     <main>
-      <img src={`/images/backgrund.jpg`} alt="background" />
-      <section id='contend'>
+      <img className='app-main-bg' src={`/images/backgrund.jpg`} alt="background" />
+      <section className='app-main-contend'>
         <Routes>
           <Route path='/login' element={<Login />} />
           {state.user.code === 'LOGGED' ?

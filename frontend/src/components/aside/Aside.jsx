@@ -9,26 +9,19 @@ function logout() {
 function SidePanel() {
   const id = localStorage.getItem('id_user')
   return (
-    <aside id='panel' >
-      <h1>Panel de admin</h1>
-      <div>
-        <h3>Menu</h3>
-        <ul>
-          <li>
-            <NavLink className={({ isActive }) => (isActive ? 'active nav' : 'nav')} to='/'>
-              <i className="fa-solid fa-house"></i>
-              <p className='formato'> Principal</p>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className='nav' to={`/profile/${id}`}>
-              <i className="fa-solid fa-user"></i>
-              <p className='formato'> Mi perfil</p>
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-      <div id='panel-button' onClick={logout}><button id='logout_button'><i className="fa-solid fa-arrow-right-from-bracket"></i> <p className='formato'> Logout</p></button></div>
+    <aside className='app-sidePanel'>
+      <h2>App Chat</h2>
+      <nav>
+        <NavLink className='app-sidePanel-nav' to='/'>
+          <i className="fa-solid fa-house"></i>
+          <p> Principal</p>
+        </NavLink>
+        <NavLink className='app-sidePanel-nav' to={`/profile/${id}`}>
+          <i className="fa-solid fa-user"></i>
+          <p> Mi perfil</p>
+        </NavLink>
+      </nav>
+      <button onClick={logout}><i className="fa-solid fa-arrow-right-from-bracket"></i> <p> Logout</p></button>
     </aside>
   )
 }

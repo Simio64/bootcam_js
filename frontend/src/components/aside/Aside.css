@@ -1,40 +1,27 @@
-#panel {
+.app-sidePanel {
   height: 100%;
   display: grid;
   grid-template-rows: min-content auto min-content;
-  background-color: black;
-  color: white;
-}
+  background-color: var(--gray);
+  border-radius: 8px;
+  padding: 20px;
 
-#panel>h1 {
-  width: 180px;
-  text-align: center;
-  margin: 10px 0;
-}
+  nav {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
-#panel-button {
-  margin: 10px 0;
-  display: flex;
-  justify-content: center;
-}
+    .app-sidePanel-nav {
+      display: flex;
+      flex-direction: row;
+      font-size: 1.1rem;
+      gap: 12px;
 
-.active {
-  padding: 5px;
-
-  display: flex;
-  flex-direction: row;
-
-  border-radius: 10px;
-  background-color: var(--gray_1);
-}
-
-.nav {
-  display: flex;
-  flex-direction: row;
-}
-
-#logout_button {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
+      p,
+      i {
+        color: var(--white);
+      }
+    }
+  }
 }

@@ -1,122 +1,86 @@
-#login {
+.app-login-section {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-#login_div {
-  position: relative;
-  height: fit-content;
-  width: 450px;
-  padding: 50px;
-  background-color: rgba(45, 59, 60, 0.7);
-  backdrop-filter: blur(3px);
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  h2 {
-    color: var(--white_1);
-    text-align: center;
-    font-size: 50px;
-  }
-
-  h3 {
-    color: var(--white_1);
-    text-align: center;
-    font-size: 20px;
-    font-weight: 200;
-  }
-
-  form {
+  .app-login-card {
+    position: relative;
+    height: fit-content;
+    width: 450px;
+    padding: 50px;
+    background: linear-gradient(180deg, rgba(45, 59, 60, 0.5), rgba(0, 0, 0, 0.3));
+    backdrop-filter: blur(5px);
+    border-radius: 24px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    button{
+    gap: 10px;
+
+    h2 {
+      text-align: center;
+    }
+
+    h3 {
+      text-align: center;
+      font-weight: 200;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .newUser {
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+        text-align: end;
+        opacity: 0.6;
+      }
+    }
+
+    .app-login-highlight {
+      padding: 5px;
+      background-color: var(--blue_4);
+      color: red;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .app-login-server {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      font-size: 12px;
+      color: white;
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      gap: 10px;
-      padding: 8px;
-      border-radius: 20px;
-      font-size: 16px;
+      gap: 6px;
+
+      .red,
+      .green {
+        width: 1.6ch;
+        height: 1.6ch;
+        border-radius: 50%;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .green {
+        background-color: green;
+      }
+    }
+
+    .app-login-advisement {
+      color: red;
+      text-align: center;
+      font-weight: bold;
+      font-size: 12px;
     }
   }
-}
-
-.highlight {
-  border-radius: 2px;
-  background-color: var(--white_2);
-  color: red;
-  text-align: center;
-}
-
-#server_status {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  font-size: 12px;
-  color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-
-#red,
-#green {
-  width: 1.5ch;
-  height: 1.5ch;
-  border-radius: 50%;
-}
-
-#red {
-  background-color: red;
-}
-
-#green {
-  background-color: green;
-}
-
-#advertencia {
-  color: red;
-  text-align: center;
-  font-weight: bold;
-  font-size: 12px;
-}
-
-.input-form {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  padding: 8px 12px;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  border: 2px solid transparent;
-  border-radius: 50px;
-
-  &:has(input:focus){
-    i{
-      color: #3C6466;
-    }
-  }
-
-  input {
-    border: none;
-    width: 100%;
-  }
-}
-
-.newUser{
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-  text-align: end;
-  opacity: 0.6;
 }

@@ -1,17 +1,11 @@
 :root {
-  --black_1: #2D3B3C;
-  --black_2: #0f0f0f;
-  --gray_1: #3b3939;
-  --gray_1_t: #3b3939ea;
-  --gray_2: #898989;
-  --gray_2_t: #898989f1;
-  --white_1: #fbfbfb;
-  --white_2: #cacaca;
-  --magenta_1: #cb4353;
-  --magenta_2: #84444c;
-  --green_1: #16792b;
-  --blue_1: #14DBE6;
-  --blue_2: #3C6466;
+  --black: #0D0D0D;
+  --gray: #121212;
+  --white: #fdfdfd;
+  --blue_1: #0D6BA6;
+  --blue_2: #03658C;
+  --blue_3: #03738C;
+  --blue_4: #033540;
 }
 
 * {
@@ -20,7 +14,6 @@
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
-  transition: 100ms ease-in-out;
 }
 
 *::-webkit-scrollbar {
@@ -32,19 +25,19 @@
 
 /* Ponemos un color de fondo y redondeamos las esquinas del thumb */
 *::-webkit-scrollbar-thumb {
-  background: var(--magenta_1);
+  background: var(--blue_1);
   border-radius: 4px;
 }
 
 /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
 *::-webkit-scrollbar-thumb:hover {
-  background: var(--magenta_2);
+  background: var(--blue_1);
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 /* Cambiamos el fondo cuando esté en active */
 *::-webkit-scrollbar-thumb:active {
-  background-color: var(--magenta_2);
+  background-color: var(--blue_2);
 }
 
 /* Ponemos un color de fondo y redondeamos las esquinas del track */
@@ -62,25 +55,69 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 62.5%;
-  font-size: 1.2rem;
 }
 
 main {
   height: 100vh;
   width: 100vw;
-  background-color: var(--black_2);
+  background-color: var(--black);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+span,
+p,
+a {
+  color: var(--white);
+  text-rendering: optimizeSpeed;
+}
+
+i {
+  color: var(--black);
+  transition: color ease 100ms;
+}
+
+h1{
+  font-size: 60px;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+h3 {
+  font-size: 20px;
 }
 
 button {
   cursor: pointer;
   border: none;
-  padding: 5px 20px;
-  border-radius: 2px;
+  padding: 8px 12px;
   min-width: 100px;
   height: fit-content;
-  font-weight: 600;
+  font-weight: bold;
   border: 2px solid transparent;
+  color: var(--white);
+  border-radius: 20px;
+  font-size: 16px;
+  transition: transform ease 100ms;
+  background-color: var(--blue_1);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  p,
+  i {
+    color: var(--white);
+  }
 
   &:active {
     transform: scale(0.95);
@@ -90,48 +127,66 @@ button {
 input,
 textarea {
   outline: none;
-  padding: 5px;
+  padding: 2px;
   font-size: 1.1rem;
-}
-
-ul {
-  list-style: none;
-}
-
-li {
-  padding: 5px;
 }
 
 a {
   text-decoration: none;
-  color: whitesmoke;
 }
 
 img {
   object-fit: cover;
+  image-rendering: optimizeSpeed;
 }
 
-/* no copiar */
+/* Main */
 
-main>img {
+.app-main-bg {
   height: 100%;
   width: 100%;
   position: absolute;
   filter: blur(10px);
-  /* opacity: 0.7; */
+  opacity: 0.6;
   z-index: 1;
 }
 
-#contend {
+.app-main-contend {
+  height: 100%;
+  width: 100%;
   position: relative;
   z-index: 2;
+}
+
+/* Forms */
+.app-input-form {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 2px solid transparent;
+  border-radius: 50px;
+
+  &:has(input:focus) {
+    i {
+      color: var(--blue_1);
+    }
+  }
+
+  input {
+    border: none;
+    width: 100%;
+  }
 }
 
 .formato {
   white-space: pre;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (width < 900px) {
 
   #principal_page {
     grid-template-columns: auto !important;

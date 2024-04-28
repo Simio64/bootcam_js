@@ -4,7 +4,7 @@ import './Main.css'
 // eslint-disable-next-line react/prop-types
 function Main ({children}) {
     return(
-      <main id='principal_page'>
+      <main className='app-layout'>
         <SidePanel/>
         <section>
           {children}

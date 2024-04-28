@@ -39,9 +39,9 @@ function Principal() {
   return (
     <Main>
       <div id='Bienvenida'>
-        <h1>Bienvenido a la aplicacion de notas</h1>
+        <h3>Chat App</h3>
         <br />
-        <h1>Tablero publico: </h1>
+        <h3>Tablero publico: </h3>
       </div>
       <div id='principal_grid'>
         <Notes notes={state.notes} charge={charge} />

@@ -1,8 +1,9 @@
 import { commentModel } from '../model/comments.js'
 import { userModel } from '../model/users.js'
+import Responses from '../config/responses.js'
 
 function catchError(error, res) {
-  res.status(400).json({ code: 'FAIL', ...error }
+  res.status(400).json({ code: Responses.fail, error }
   )
 }
 
@@ -19,7 +20,7 @@ export const getAllComments = (req, res) => {
         }))
         res.status(200).json(new_crud)
       }
-      else res.status(400).json({ code: 'NO FOUND' })
+      else res.status(400).json({ code: Responses.noContend })
     })
     .catch(error => catchError(error, res))
 }
@@ -27,13 +28,13 @@ export const getUniqueComment = (req, res) => {
   commentModel.findOne({ where: { id_comment: req.params.id } })
     .then(crud => {
       if (crud.length != 0) res.status(200).json(crud)
-      else res.status(400).json({ code: 'NO FOUND' })
+      else res.status(400).json({ code: Responses.noContend })
     })
     .catch(error => catchError(error, res))
 }
 export const addComment = (req, res) => {
   const { note, id } = req.body
-  if (note === '') catchError({ error: 'MISSING DATA' }, res)
+  if (note === '') catchError({ error: Responses.missData }, res)
   else {
     commentModel.create({ note, UserId: id })
       .then(async crud => {
@@ -45,7 +46,7 @@ export const addComment = (req, res) => {
 }
 export const updateComment = (req, res) => {
   const { id_comment, note } = req.body
-  if (note === '') catchError({ error: 'MISSING DATA' }, res)
+  if (note === '') catchError({ error: Responses.missData }, res)
   else {
     commentModel.update({ note }, { where: { id_comment } })
       .then(() => {
@@ -59,8 +60,8 @@ export const deleteComment = (req, res) => {
   const { id_comment } = req.body
   commentModel.destroy({ where: { id_comment } })
     .then(crud => {
-      if (crud != 0) res.status(200).json({ code: 'DELETED' })
-      else res.status(400).json({ code: 'NO FOUND' })
+      if (crud != 0) res.status(200).json({ code: Responses.deleted })
+      else res.status(400).json({ code: Responses.noContend })
     })
     .catch(error => catchError(error, res))
 }

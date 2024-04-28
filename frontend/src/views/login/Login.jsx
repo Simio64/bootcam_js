@@ -82,7 +82,7 @@ function Login() {
             <i className="fa-solid fa-arrow-right"></i>
           </button>
         </form>
-        {state.code === 'USER OR PASSWORD NO MATCH' ? <p className='highlight'>*usuaro o contraseña no coinciden</p> : null}
+        {state.code === 'NO MATCH' ? <p className='highlight'>*usuaro o contraseña no coinciden</p> : null}
         {state.code === 'mail must be unique' ? <p className='highlight'>*El correo ya se encuentra registrado</p> : null}
         {state.code === 'name must be unique' ? <p className='highlight'>*El Nick ya esta en uso</p> : null}
         {messageError !== '' ? <p className='highlight'>{messageError}</p> : null}

@@ -1,9 +1,10 @@
 import { createToken, decode } from '../middleware/token.js'
 import { userModel } from '../model/users.js'
 import bcrypt from 'bcrypt'
+import Responses from '../config/responses.js'
 
 function catchError(error, res) {
-  res.status(400).json({ code: 'FAIL', error }
+  res.status(400).json({ code: Responses.fail, error }
   )
 }
 
@@ -11,7 +12,7 @@ export const getAllUsers = (req, res) => {
   userModel.findAll()
     .then(crud => {
       if (crud.length != 0) res.status(200).json(crud)
-      else res.status(404).json({ code: 'NO CONTEND' })
+      else res.status(404).json({ code: Responses.noContend })
     })
     .catch(error => catchError(error, res))
 }
@@ -23,7 +24,7 @@ export const getUser = (req, res) => {
         const { password_hash, id, name, is_admin, mail, imagen } = crud
         res.status(200).json({ id, name, mail, imagen })
       }
-      else res.status(404).json({ code: 'NO CONTEND' })
+      else res.status(404).json({ code: Responses.noContend })
     })
     .catch(error => catchError(error, res))
 }
@@ -31,7 +32,7 @@ export const addUser = async (req, res) => {
   const { name, mail, password } = req.body
   const num = Math.floor((Math.random() * (14 - 1 + 1)) + 1)
 
-  if (name === '' || mail === '' || password === '') catchError({ error: 'MISSING DATA' }, res)
+  if (name === '' || mail === '' || password === '') catchError({ error: Responses.missData }, res)
   else {
     let password_hash = {}
     if (password) { password_hash = await bcrypt.hash(password, 10) }
@@ -47,7 +48,7 @@ export const addUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   const { id, name, mail, password } = req.body
-  if (name === '' || mail === '' || password === '') catchError({ error: 'MISSING DATA' }, res)
+  if (name === '' || mail === '' || password === '') catchError({ error: Responses.missData }, res)
   else {
     let password_hash = {}
     if (password) { password_hash = await bcrypt.hash(password, 10) }
@@ -64,8 +65,8 @@ export const deleteUser = async (req, res) => {
   const { id } = req.body
   userModel.destroy({ where: { id } })
     .then(crud => {
-      if (crud.length != 0) res.status(200).json({ code: 'USER DELETED' })
-      else res.status(404).json({ code: 'NO CONTEND' }) // no contend
+      if (crud.length != 0) res.status(200).json({ code: Responses.deleted })
+      else res.status(404).json({ code: Responses.noContend }) // no contend
     })
     .catch(error => catchError(error, res))
 }
@@ -74,12 +75,12 @@ export const login = async (req, res) => {
   const { mail, password } = req.body
   try {
     const crud = await userModel.findOne({ where: { mail } })
-    if (crud == null) res.status(401).json({ code: 'USER OR PASSWORD NO MATCH' })
+    if (crud == null) res.status(401).json({ code: Responses.noMach })
     else {
       const { password_hash, id, name, is_admin, imagen } = crud
       const validate_password = await bcrypt.compare(password, password_hash)
       const token = createToken({ id, is_admin })
-      validate_password ? res.status(200).json({ code: 'LOGGED', id, token, name, imagen }) : res.status(401).json({ code: 'USER OR PASSWORD NO MATCH' })
+      validate_password ? res.status(200).json({ code: Responses.logged, id, token, name, imagen }) : res.status(401).json({ code: 'USER OR PASSWORD NO MATCH' })
     }
   } catch (error) {
     catchError(error, res)
@@ -91,10 +92,10 @@ export const loginToken = async (req, res) => {
   try {
     const { id } = decode(token)
     const crud = await userModel.findByPk(id)
-    if (crud == null) res.status(401).json({ code: 'USER OR PASSWORD NO MATCH' })
+    if (crud == null) res.status(401).json({ code: Responses.noMach })
     else {
       const { id, name, imagen } = crud
-      res.status(200).json({ code: 'LOGGED', id, token, name, imagen })
+      res.status(200).json({ code: Responses.logged, id, token, name, imagen })
     }
   } catch (error) {
     catchError(error, res)

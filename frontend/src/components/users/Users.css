@@ -1,24 +1,22 @@
-.online_user {
-  width: max-content;
-  height: max-content;
-  margin: 5px;
-  padding: 5px;
+.app-online {
+  width: fit-content;
+  height: fit-content;
+  padding: 6px;
 
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
 
-  border-radius: 10px;
-  background-color: var(--gray_1);
+  border-radius: 50px;
+  background-color: var(--blue_4);
 
-  color: whitesmoke;
-}
+  .app-online-img {
+    height: 4ch;
+    aspect-ratio: 1/1;
 
-.online_user_img {
-  width: 3ch;
-  height: 3ch;
-
-  border: solid 2px greenyellow;
-  border-radius: 50%;
+    border: solid 2px var(--blue_3);
+    border-radius: 50%;
+  }
 }

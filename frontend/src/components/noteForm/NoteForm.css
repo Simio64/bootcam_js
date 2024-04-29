@@ -1,4 +1,4 @@
-#new_note_form {
+.app-form-note {
   height: fit-content;
   max-width: 400px;
   min-width: 200px;

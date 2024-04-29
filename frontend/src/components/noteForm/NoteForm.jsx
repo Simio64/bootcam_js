@@ -8,11 +8,10 @@ import './NoteForm.css'
 
 function NewNote() {
   const [note, setNote] = useState()
-
   const dispatch = useDispatch()
 
-  function handlePostNote(event) {
-    event.preventDefault()
+  function handlePostNote(e) {
+    e.preventDefault()
     const data = {
       id: localStorage.getItem('id_user'),
       note
@@ -23,10 +22,13 @@ function NewNote() {
   }
 
   return (
-    <section id='new_note_form'>
+    <section id='app-form-note'>
       <form onSubmit={handlePostNote}>
-        <textarea name='note' id="text_area" cols="30" rows="10" placeholder='Nota' value={note} onChange={({ target }) => setNote(target.value)}></textarea>
-        <button>Enviar</button>
+        <textarea name='note' placeholder='Nota' value={note} onChange={({ target }) => setNote(target.value)}></textarea>
+        <button>
+          <i className="fa-solid fa-paper-plane"></i>
+          <p>Enviar</p>
+        </button>
       </form>
     </section>
   )

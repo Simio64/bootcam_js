@@ -18,9 +18,18 @@
       font-size: 1.1rem;
       gap: 12px;
 
+      &.active {
+
+        p,
+        i {
+          color: var(--blue_1);
+        }
+      }
+
       p,
       i {
         color: var(--white);
+        transition: color ease 100ms;
       }
     }
   }

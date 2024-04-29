@@ -10,7 +10,7 @@ function SidePanel() {
   const id = localStorage.getItem('id_user')
   return (
     <aside className='app-sidePanel'>
-      <h2>App Chat</h2>
+      <h3>Chat App</h3>
       <nav>
         <NavLink className='app-sidePanel-nav' to='/'>
           <i className="fa-solid fa-house"></i>

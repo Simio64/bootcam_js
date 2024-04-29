@@ -40,15 +40,15 @@ function Cards(params, delete_button) {
   return params.map(({ note, id_comment, user, imagen, updatedAt, UserId }) => {
     const date = new Date(updatedAt)
     return (
-      <div className='card' key={id_comment}>
-        <Link to={`/profile/${UserId}`}><img className='user_img' src={`${urlBase}/${imagen}`} alt="user_img" /></Link>
+      <div className='app-card' key={id_comment}>
+        <Link to={`/profile/${UserId}`}><img className='app-card-img' src={`${urlBase}/${imagen}`} alt="user_img" /></Link>
         <div>
-          <div className='data_user'>
-            <h3 className='titulo'>{user}</h3>
+          <div className='app-card-user'>
+            <h3>{user}</h3>
             <p>{format(date, 'es')}</p>
           </div>
           <p>{note}</p>
-          {delete_button && <button className='delete_button' id={id_comment} onClick={handle_delete}> borrar</button>}
+          {delete_button && <button className='app-card-button' id={id_comment} onClick={handle_delete}>Borrar</button>}
         </div>
       </div>
     )
@@ -59,8 +59,8 @@ function Cards(params, delete_button) {
 const Notes = ({ notes, charge, delete_button = false }) => {
   if (charge) return <p>Cargando...</p>
   else return (
-    <section id='cards'>
-      <div id='mantel'>{Cards(notes, delete_button)}</div>
+    <section className='app-cards'>
+      {Cards(notes, delete_button)}
     </section>
   )
 }

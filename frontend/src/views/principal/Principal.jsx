@@ -19,7 +19,7 @@ function Principal() {
 
   useEffect(() => {
     dispatch(initNotes())
-    if (state.lenth !== 0) setCharge(false)
+    if (state.length !== 0) setCharge(false)
     socket.emit('@client/new_user', {
       id: state.user.id,
       name: state.user.name,
@@ -28,30 +28,24 @@ function Principal() {
   }, []);
 
   useEffect(() => {
-    socket.on('@server/new_user', data => {
-      setOnlineUsers(data)
-    })
-    socket.on('@server/new_message', () => {
-      dispatch(initNotes())
-    })
+    socket.on('@server/new_user', data => setOnlineUsers(data))
+    socket.on('@server/new_message', () => dispatch(initNotes()))
   }, [socket]);
 
   return (
     <Main>
-      <div id='Bienvenida'>
-        <h3>Chat App</h3>
-        <br />
+      <div className='app-principal-welcome'>
         <h3>Tablero publico: </h3>
       </div>
-      <div id='principal_grid'>
+      <div className='app-principal-notes'>
         <Notes notes={state.notes} charge={charge} />
-        <div id='form_NoteForm_principal'>
+        <section>
           <NoteForm />
           <div>
             <h2>Usuarios en linea</h2>
             {Users(onlineUsers)}
           </div>
-        </div>
+        </section>
       </div>
     </Main>
   )

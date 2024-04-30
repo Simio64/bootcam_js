@@ -21,7 +21,7 @@ function App() {
 
   return (
     <main>
-      <img className='app-main-bg' src={`/images/backgrund.jpg`} alt="background" />
+      <img className='app-main-bg' src={`/images/background.jpg`} alt="background" />
       <section className='app-main-contend'>
         <Routes>
           <Route path='/login' element={<Login />} />
@@ -29,7 +29,7 @@ function App() {
             <>
               <Route path='/' element={<Principal />} />
               <Route path='/profile/:id' element={<Profile />} />
-              <Route path='*' element={<p>NOT FOUND</p>} />
+              <Route path='*' element={<Navigate to='/' />} />
             </>
             : null}
           <Route path='*' element={<Navigate to='/login' />} />

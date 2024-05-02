@@ -13,7 +13,7 @@
   height: calc(100% - 64px)
 }
 
-.app-principal-notes{
+.app-principal-notes {
   height: 100%;
   max-width: 700px;
   width: 100%;
@@ -27,4 +27,13 @@
   padding: 10px;
   background-color: var(--gray);
   border-radius: 5px;
+}
+
+@media screen and (width < 1000px) {
+  .app-principal-container {
+    grid-template-columns: 1fr;
+  }
+  .app-principal-users {
+    display: none;
+  }
 }

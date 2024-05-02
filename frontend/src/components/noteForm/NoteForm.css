@@ -1,11 +1,23 @@
 .app-form-note {
   height: fit-content;
-  max-width: 400px;
-  min-width: 200px;
+  width: 100%;
 
-  margin: 10px auto;
   padding: 20px;
   border-radius: 5px;
 
-  background-color: var(--gray_1);
+  background-color: var(--gray);
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 10px;
+    textarea {
+      padding: 10px;
+      width: 100%;
+      resize: none;
+      border-radius: 5px;
+    }
+  }
 }

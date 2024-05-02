@@ -5,12 +5,10 @@ import http from 'http'
 
 configDotenv()
 
-const urlCors = '*'
-
 const server = http.createServer(app)
 const io = new Server(server, {
   cors: {
-    origin: ['http://127.0.0.1', 'http://localhost:5173', urlCors]
+    origin: ['http://127.0.0.1', 'http://localhost' ,'http://localhost:5173']
   }
 });
 

@@ -35,16 +35,20 @@ function Principal() {
   return (
     <Main>
       <div className='app-principal-welcome'>
-        <h3>Tablero publico: </h3>
+        <h3>Tablero publico </h3>
       </div>
-      <div className='app-principal-notes'>
-        <Notes notes={state.notes} charge={charge} />
-        <section>
-          <NoteForm />
-          <div>
-            <h2>Usuarios en linea</h2>
-            {Users(onlineUsers)}
-          </div>
+      <div className='app-principal-container'>
+        <section className='app-principal-notes'>
+          <section>
+            <Notes notes={state.notes} charge={charge} />
+          </section>
+          <section>
+            <NoteForm />
+          </section>
+        </section>
+        <section className='app-principal-users'>
+          <h4>Usuarios en linea</h4>
+          {Users(onlineUsers)}
         </section>
       </div>
     </Main>

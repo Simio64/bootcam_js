@@ -22,7 +22,7 @@ function NewNote() {
   }
 
   return (
-    <section id='app-form-note'>
+    <section className='app-form-note'>
       <form onSubmit={handlePostNote}>
         <textarea name='note' placeholder='Nota' value={note} onChange={({ target }) => setNote(target.value)}></textarea>
         <button>

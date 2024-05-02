@@ -3,15 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "private":true,
-  "workspaces":[
+  "private": true,
+  "workspaces": [
     "backend",
     "frontend"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run socket --workspaces=backend",
-    "build": "npm run build --workspaces=frontend"
+    "start": "npm run socket -w backend",
+    "build": "npm run build -w frontend"
   },
   "keywords": [],
   "type": "module",

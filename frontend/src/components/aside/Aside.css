@@ -34,3 +34,54 @@
     }
   }
 }
+
+@media screen and (width < 720px) {
+  .app-sidePanel {
+    h3 {
+      font-size: 0;
+    }
+
+    .app-sidePanel-nav {
+      p {
+        display: none;
+      }
+    }
+
+    button {
+      p {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (width < 520px) {
+  .app-sidePanel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    padding: 10px;
+
+    h3 {
+      display: none;
+    }
+
+    nav {
+      margin-top: 0;
+      width: 100%;
+      height: 100%;
+      flex-direction: row;
+      justify-content: space-around;
+
+      a {
+        height: fit-content;
+      }
+    }
+
+    button {
+      display: none;
+    }
+  }
+}

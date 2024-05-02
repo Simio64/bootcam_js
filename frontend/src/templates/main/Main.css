@@ -7,3 +7,10 @@
   grid-template-columns: max-content auto;
   background-color: transparent;
 }
+
+@media screen and (width < 520px) {
+  .app-layout {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
